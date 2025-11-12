@@ -1,0 +1,38 @@
+{
+  "name": "Development Container with Oracle DB",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true,
+      "username": "vscode",
+      "userUid": 1000,
+      "userGid": 1000
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest",
+      "ppa": false
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "oracle.oracledevtools"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "forwardPorts": [1521],
+  
+  "postCreateCommand": "echo 'Dev Container Ready! Oracle DB is available on oracle-db:1521'",
+  
+  "remoteUser": "vscode"
+}
